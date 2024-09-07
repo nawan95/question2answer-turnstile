@@ -99,7 +99,13 @@ class qa_turnstile_captcha
 			'}',
 		);
 
-		$qa_content['script_src'][] = 'https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha&onload=turnstile_onload&render=explicit';
+		    $qa_content['script_lines'][] = array(
+        		'var script = document.createElement("script");',
+        		'script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?compat=recaptcha&onload=turnstile_onload";',
+        		'script.async = true;',
+        		'script.defer = true;',
+        		'document.head.appendChild(script);'
+    		);
 
 		return '';
 	}
